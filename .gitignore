@@ -6,7 +6,8 @@
 ._*
 
 # Custom folder icons
-Icon
+Icon
+
 
 # Volume root files
 .DocumentRevisions-V100
@@ -56,3 +57,9 @@ htmlcov/
 
 # pyenv
 # .python-version
+
+# pip 安裝腳本
+get-pip.py
+
+# Docker PostgreSQL 資料卷
+pgdata/
