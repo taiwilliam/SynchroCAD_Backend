@@ -1,0 +1,32 @@
+tags:
+  - Users
+summary: List all users
+responses:
+  200:
+    description: Users retrieved successfully
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+          example: Users retrieved successfully
+        data:
+          type: array
+          items:
+            $ref: '#/definitions/UserPublic'
+definitions:
+  UserPublic:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+      name:
+        type: string
+        example: Alice Chen
+      email:
+        type: string
+        example: alice@example.com

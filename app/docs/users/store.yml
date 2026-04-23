@@ -1,0 +1,58 @@
+tags:
+  - Users
+summary: Create a new user
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      required:
+        - name
+        - email
+        - password
+      properties:
+        name:
+          type: string
+          example: Alice Chen
+        email:
+          type: string
+          example: alice@example.com
+        password:
+          type: string
+          example: secret123
+responses:
+  201:
+    description: User created successfully
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+          example: User created successfully
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 6
+            name:
+              type: string
+              example: Alice Chen
+            email:
+              type: string
+              example: alice@example.com
+  400:
+    description: Validation error
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+          example: Name, email and password are required

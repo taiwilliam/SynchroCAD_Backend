@@ -1,0 +1,44 @@
+tags:
+  - Users
+summary: Get a user by ID
+parameters:
+  - in: path
+    name: user_id
+    type: integer
+    required: true
+    description: User ID
+responses:
+  200:
+    description: User found
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+          example: User retrieved successfully
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            name:
+              type: string
+              example: Alice Chen
+            email:
+              type: string
+              example: alice@example.com
+  404:
+    description: User not found
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+          example: User not found

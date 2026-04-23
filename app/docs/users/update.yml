@@ -1,0 +1,67 @@
+tags:
+  - Users
+summary: Update a user
+parameters:
+  - in: path
+    name: user_id
+    type: integer
+    required: true
+    description: User ID
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Alice Chen
+        email:
+          type: string
+          example: alice@example.com
+responses:
+  200:
+    description: User updated successfully
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+          example: User updated successfully
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            name:
+              type: string
+              example: Alice Chen
+            email:
+              type: string
+              example: alice@example.com
+  400:
+    description: Validation error
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+          example: Nothing to update
+  404:
+    description: User not found
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+          example: User not found

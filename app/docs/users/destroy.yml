@@ -1,0 +1,32 @@
+tags:
+  - Users
+summary: Delete a user
+parameters:
+  - in: path
+    name: user_id
+    type: integer
+    required: true
+    description: User ID
+responses:
+  200:
+    description: User deleted successfully
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+          example: User deleted successfully
+  404:
+    description: User not found
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+          example: User not found
