@@ -1,0 +1,37 @@
+name: Simple Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # 只有當 push 到 main 分支時才執行部署
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: 透過 SSH 連線並部署
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd /opt/apps/SynchroCAD_Backend
+            
+            # 1. 拉取最新原始碼 (包含 Dockerfile 和 docker-compose.yml)
+            git pull origin main
+            
+            # 2. 在 EC2 本地編譯並啟動
+            # --build 會自動偵測程式碼變動並重新製作 Image
+            docker compose up -d --build --remove-orphans
+            
+            # 3. 執行資料庫遷移
+            docker compose exec -T backend flask --app wsgi.py db upgrade
+            
+            echo "✅ 部署成功！"
