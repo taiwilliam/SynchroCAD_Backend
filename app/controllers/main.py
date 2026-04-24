@@ -1,2 +1,2 @@
 def hello():
-    return "Hello, SynchroCAD!"
+    return "Hello, SynchroCAD! 1.0.0"
