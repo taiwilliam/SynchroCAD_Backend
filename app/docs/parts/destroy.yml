@@ -1,0 +1,32 @@
+tags:
+  - Parts
+summary: 刪除零件
+parameters:
+  - in: path
+    name: part_id
+    type: integer
+    required: true
+    description: Part ID
+responses:
+  200:
+    description: Part deleted successfully
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+          example: Part deleted successfully
+  404:
+    description: Part not found
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+          example: Part not found

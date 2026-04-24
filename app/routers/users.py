@@ -2,8 +2,8 @@
 User Router - RESTful API routes for users.
 """
 import os
-from flask import Blueprint
 from flasgger import swag_from
+from flask import Blueprint
 from app.controllers import UserController
 from app.http import json_body
 

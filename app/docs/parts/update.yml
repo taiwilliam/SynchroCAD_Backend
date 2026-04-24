@@ -1,0 +1,40 @@
+tags:
+  - Parts
+summary: 更新零件
+parameters:
+  - in: path
+    name: part_id
+    type: integer
+    required: true
+    description: Part ID
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '../schemas/part_input.yml'
+responses:
+  200:
+    description: Part updated successfully
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+          example: Part updated successfully
+        data:
+          $ref: '../schemas/part.yml'
+  404:
+    description: Part not found
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+          example: Part not found

@@ -1,3 +1,3 @@
-from .seeds import UserSeeder
+from .seeds import UserSeeder, PartSeeder
 
-__all__ = ["UserSeeder"]
+__all__ = ["UserSeeder", "PartSeeder"]

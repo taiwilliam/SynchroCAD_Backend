@@ -1,0 +1,19 @@
+tags:
+  - Parts
+summary: 取得所有零件
+responses:
+  200:
+    description: 零件列表
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+          example: Parts retrieved successfully
+        data:
+          type: array
+          items:
+            $ref: '../schemas/part.yml'

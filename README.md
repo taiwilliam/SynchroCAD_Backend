@@ -30,3 +30,12 @@ docker compose up --build
 
 ## 資料庫遷移
 請參考 Flask-Migrate 說明。
+
+  ## 資料庫遷移指令
+  flask --app wsgi.py db upgrade
+
+  ## 資料庫假資料創建指令
+  flask --app wsgi.py seed
+
+  ## 資料庫清除假資料
+  flask --app wsgi.py clearSeed

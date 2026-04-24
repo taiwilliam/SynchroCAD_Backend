@@ -1,0 +1,34 @@
+tags:
+  - Parts
+summary: 取得單一零件
+parameters:
+  - in: path
+    name: part_id
+    type: integer
+    required: true
+    description: Part ID
+responses:
+  200:
+    description: Part retrieved successfully
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+          example: Part retrieved successfully
+        data:
+          $ref: '../schemas/part.yml'
+  404:
+    description: Part not found
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+          example: Part not found

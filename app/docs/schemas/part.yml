@@ -1,0 +1,37 @@
+type: object
+properties:
+  id:
+    type: integer
+  part_number:
+    type: string
+  part_name:
+    type: string
+  category_id:
+    type: integer
+  material:
+    type: string
+  status:
+    type: integer
+  revision:
+    type: string
+  updated_at:
+    type: string
+    format: date-time
+  owner:
+    type: string
+  tolerance:
+    type: string
+  cad_file_url:
+    type: string
+  model_file_url:
+    type: string
+  description:
+    type: string
+  standard:
+    type: string
+  specification:
+    type: string
+  project_code:
+    type: string
+  drawing_number:
+    type: string
