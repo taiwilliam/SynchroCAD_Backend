@@ -3,7 +3,7 @@ Parts Router - RESTful API routes for parts.
 """
 import os
 from flasgger import swag_from
-from flask import Blueprint
+from flask import Blueprint, request
 from app.controllers.part import PartController
 from app.http import json_body
 
@@ -36,3 +36,10 @@ def update(part_id):
 @swag_from(os.path.join(_docs, 'destroy.yml'))
 def destroy(part_id):
     return PartController.delete(part_id)
+
+@part_bp.route('/<int:part_id>/upload', methods=['POST'])
+def upload(part_id):
+    folder = request.form.get("folder")        # e.g. 'DXF' or 'GLB'
+    field = request.form.get("field")          # 'cad_file_url' or 'model_file_url'
+    file = request.files.get("file")
+    return PartController.upload_file(part_id, folder, field, file)

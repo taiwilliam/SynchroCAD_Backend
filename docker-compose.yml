@@ -9,6 +9,10 @@ services:
       - FLASK_APP=wsgi.py
       - FLASK_ENV=development
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION:-ap-east-2}
+      - AWS_S3_BUCKET=${AWS_S3_BUCKET:-synchro-cad-files}
     depends_on:
       - db
   db:
