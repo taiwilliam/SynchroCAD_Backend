@@ -1,5 +1,6 @@
 flask
 flask-migrate
 flask-sqlalchemy
+flask-cors
 flasgger
 psycopg2-binary

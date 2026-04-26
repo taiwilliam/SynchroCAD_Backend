@@ -1,6 +1,7 @@
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
-# Shared extension instances initialized in the app factory.
 db = SQLAlchemy()
 migrate = Migrate()
+cors = CORS()
