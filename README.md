@@ -83,22 +83,11 @@ Repository      資料庫存取（SQLAlchemy ORM）
 PostgreSQL
 ```
 
-### Flask Extension 管理
-
-所有第三方服務統一以 Flask extension 模式初始化，在 `factory.py` 的 `create_app()` 中集中管理：
-
-```python
-cors.init_app(app, origins=[...])   # CORS 白名單
-db.init_app(app)                    # SQLAlchemy
-migrate.init_app(app, db)           # Alembic 遷移
-s3.init_app(app)                    # boto3 S3 client（建立一次，thread-safe 重複使用）
-```
-
 ---
 
 ## S3 檔案上傳設計
 
-上傳流程採**後端代理**模式，AWS 金鑰不暴露於前端：
+上傳流程採**後端代理**模式：
 
 ```
 前端
@@ -186,8 +175,8 @@ cp .env.example .env
 ## 專案亮點
 
 - **雲端架構規劃**：前端、後端、檔案儲存三層分離，各自獨立擴充，符合 AWS 最佳實踐
-- **最小權限原則**：IAM Policy 只開放必要的 S3 操作，AWS 金鑰不進版控、不暴露前端
-- **分層架構**：Router / Controller / Service / Repository 四層分離，職責清晰
+- **最小權限原則**：IAM Policy 只開放必要的 S3 操作
+- **分層架構**：Router / Controller / Service / Repository 四層分離，職責分離
 - **Extension 模式**：S3 client 以 Flask extension 管理，啟動時建立一次後 thread-safe 重複使用
 - **大檔支援**：boto3 TransferConfig 設定 multipart 上傳，適應大型 CAD 檔案
 - **API 文件**：Swagger UI 自動生成，降低前後端溝通成本
